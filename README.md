@@ -888,8 +888,6 @@ SOFTWARE.
 
 **💡 Projet réalisé avec passion par Hiba Bourzgui**
 
-![Signature](https://via.placeholder.com/300x100.png?text=Hiba+Bourzgui+Signature)
-
 *"Code is like humor. When you have to explain it, it's bad." - Cory House*
 
 </div>
