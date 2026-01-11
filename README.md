@@ -820,7 +820,7 @@ const codeReviewChecklist = {
 ```text
 MIT License
 
-Copyright (c) 2024 Hiba Bourzgui
+Copyright (c) 2024 Hiba Bourzgui & Benchahid basma 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -847,28 +847,26 @@ SOFTWARE.
 
 ## 👩‍💻 Développeuse 
 
-**Hiba Bourzgui**  
+**Hiba Bourzgui & Benchahid basma**  
 *Full Stack Developer & UI/UX Designer*
 
 <table>
 <tr>
 <td align="center">
 <strong>📧 Email</strong><br>
-<a href="mailto:hibaabourzgui@gmail.com">hibaabourzgui@gmail.com</a>
+<a href="mailto:hibaabourzgui@gmail.com ">hibaabourzgui@gmail.com && Benchahid basma </a>
 </td>
 <td align="center">
 <strong>💼 LinkedIn</strong><br>
-<a href="https://linkedin.com/in/hibabourzgui">hibabourzgui</a>
+<a href="https://linkedin.com/in/hibabourzgui">hibabourzgui & BasmaBenchahid</a>
 </td>
 <td align="center">
 <strong>🐙 GitHub</strong><br>
-<a href="https://github.com/HibaBourzgui">HibaBourzgui</a>
+<a href="https://github.com/HibaBourzgui">HibaBourzgui&& Benchahidbasma</a>
 </td>
 </tr>
 <tr>
 <td align="center">
-<strong>🐦 Twitter</strong><br>
-<a href="https://twitter.com/hibabourzgui">@hibabourzgui</a>
 </td>
 </tr>
 </table>
@@ -886,7 +884,7 @@ SOFTWARE.
 
 <div align="center">
 
-**💡 Projet réalisé avec passion par Hiba Bourzgui**
+**💡 Projet réalisé avec passion par Hiba Bourzgui && benchahid basma**
 
 *"Code is like humor. When you have to explain it, it's bad." - Cory House*
 
