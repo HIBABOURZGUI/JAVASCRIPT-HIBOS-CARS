@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Reset Password Flow</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="p-4">
+    <div class="container">
+        <h1 class="mb-4">🧪 Test Reset Password Flow</h1>
+        
+        <div class="alert alert-info">
+            <strong>Instructions :</strong>
+            <ol>
+                <li>Clique sur "🧹 Nettoyer localStorage" pour réinitialiser la base</li>
+                <li>Clique sur "🔍 Voir l'état de localStorage" pour vérifier</li>
+                <li>Retourne à <a href="index.html">index.html</a></li>
+                <li>Clique sur "Mot de passe oublié?" et teste le flux</li>
+            </ol>
+        </div>
+
+        <div class="btn-group mb-4" role="group">
+            <button onclick="cleanLocalStorage()" class="btn btn-danger">🧹 Nettoyer localStorage</button>
+            <button onclick="checkLocalStorage()" class="btn btn-info">🔍 Vérifier localStorage</button>
+            <button onclick="goToHome()" class="btn btn-success">🏠 Retour à l'accueil</button>
+        </div>
+
+        <hr>
+
+        <h3>📊 État de localStorage</h3>
+        <pre id="storage-output" class="bg-light p-3 rounded" style="max-height: 500px; overflow-y: auto;">Cliquez sur "Vérifier localStorage"...</pre>
+    </div>
+
+    <script src="js/types.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/crud.js"></script>
+
+    <script>
+        function cleanLocalStorage() {
+            localStorage.removeItem('autorent_db_v1');
+            localStorage.removeItem('autorent_db_version');
+            localStorage.removeItem('currentUser');
+            localStorage.removeItem('rememberMe');
+            
+            alert('✅ localStorage nettoyé! La page va recharger avec les données par défaut.');
+            window.location.href = 'index.html';
+        }
+
+        function checkLocalStorage() {
+            const db = localStorage.getItem('autorent_db_v1');
+            const version = localStorage.getItem('autorent_db_version');
+            
+            let output = `Version: ${version || 'N/A'}\n\n`;
+            
+            if (db) {
+                try {
+                    const parsed = JSON.parse(db);
+                    output += `=== COLLECTIONS DISPONIBLES ===\n`;
+                    output += Object.keys(parsed).map(key => {
+                        const count = Array.isArray(parsed[key]) ? parsed[key].length : 'objet';
+                        return `• ${key}: ${count} items`;
+                    }).join('\n');
+                    
+                    output += `\n\n=== RESET TOKENS ===\n`;
+                    output += JSON.stringify(parsed.resetTokens || [], null, 2);
+                    
+                    output += `\n\n=== CLIENTS (emails) ===\n`;
+                    output += parsed.clients.map(c => `• ${c.email}`).join('\n');
+                } catch (e) {
+                    output += `Erreur parsing: ${e.message}`;
+                }
+            } else {
+                output += 'localStorage vide';
+            }
+            
+            document.getElementById('storage-output').textContent = output;
+        }
+
+        function goToHome() {
+            window.location.href = 'index.html';
+        }
+
+        // Afficher localStorage au chargement
+        document.addEventListener('DOMContentLoaded', function() {
+            checkLocalStorage();
+        });
+    </script>
+</body>
+</html>

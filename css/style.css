@@ -1,0 +1,321 @@
+/* ----------------------------------- */
+/* Styles de l'Arrière-Plan (Dégradé Linéaire Fluide Gris vers Or) */
+/* ----------------------------------- */
+
+body {
+    background-color: #0f172a; /* Bleu Nuit très profond */
+    background-image: linear-gradient(to bottom, #0f172a, #1e293b);
+    min-height: 100vh;
+    color: #f8fafc; /* Texte clair */
+}
+
+/* Les cartes doivent être foncées aussi */
+.card {
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    color: white;
+}
+.table {
+    color: white; /* Important pour les tableaux */
+}
+
+/* ----------------------------------- */
+/* Styles du Logo et des Cartes */
+/* ----------------------------------- */
+
+#app-logo {
+    width: 100px; 
+    height: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+    object-fit: cover; 
+    border: 3px solid #B8860B; 
+}
+
+/* Les cartes de formulaire (index.html) sont blanches et bien visibles */
+.card {
+    background-color: #ffffff; 
+    border: 1px solid #BDC3C7; 
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); 
+    color: #34495E; 
+}
+
+/* S'assurer que le texte des inputs est sombre */
+.card input, .card select, .card textarea {
+    color: #000;
+}
+
+/* ----------------------------------- */
+/* Styles de la Sidebar et du Contenu (Back-Office) */
+/* ----------------------------------- */
+
+.sidebar-fixed {
+    /* Fond de Sidebar : Gris Profond */
+    background-color: #34495E !important; 
+    border-right: 1px solid #4E6A81;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 1000;
+}
+/* Les liens actifs/hover de la Sidebar doivent être en Or */
+.nav-link.active, .nav-link:hover {
+    background-color: #B8860B !important; 
+    color: #ffffff !important;
+}
+.nav-link {
+    color: #ECF0F1 !important;
+}
+
+main {
+    /* Fond du contenu : Gris très clair */
+    background-color: #ECF0F1;
+    color: #34495E;
+    margin-left: 250px; 
+    padding-top: 56px;
+}
+/* Les titres dans le main doivent être sombres */
+main h1, main h2, main h3 {
+    color: #34495E !important;
+}
+
+/* ----------------------------------- */
+/* Couleurs d'Accentuation Bootstrap (Or) */
+/* ----------------------------------- */
+
+/* Primaire : Or (Actions principales, Connexion) */
+.text-primary { color: #B8860B !important; }
+.btn-primary {
+    background-color: #B8860B !important;
+    border-color: #B8860B !important;
+    color: white !important;
+}
+.btn-primary:hover {
+    background-color: #A3770A !important;
+    border-color: #A3770A !important;
+}
+
+/* Secondaire : Gris (Actions neutres, Déconnexion) */
+.btn-secondary {
+    background-color: #95A5A6 !important;
+    border-color: #95A5A6 !important;
+    color: white !important;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #34495E !important; /* Navbar Gris Profond */
+    border-bottom: 1px solid #4E6A81;
+}
+.navbar-brand, .navbar-text {
+    color: #ECF0F1 !important;
+}
+
+/* ============================================
+   BACKGROUND PAGES LOGIN, INDEX & CATALOGUE
+   ============================================ */
+
+/* Page Login - Fond Bleu Professionnel Clair */
+body.login-bg {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2ff 25%, #f8fafc 50%, #dbeafe 75%, #f0f9ff 100%) !important;
+    position: relative;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+body.login-bg::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(15, 23, 42, 0.02) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+body.login-bg::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+    pointer-events: none;
+    z-index: 1;
+    animation: shimmer 8s infinite;
+}
+
+/* Page Index - Fond Bleu Professionnel Clair */
+body.index-bg {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2ff 25%, #f8fafc 50%, #dbeafe 75%, #f0f9ff 100%) !important;
+    position: relative;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+body.index-bg::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(15, 23, 42, 0.02) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+body.index-bg::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+    pointer-events: none;
+    z-index: 1;
+    animation: shimmer 8s infinite;
+}
+
+/* Page Catalogue - Fond Bleu Professionnel Clair */
+body.catalogue-bg {
+    background: #ECF0F1 !important;
+    position: relative;
+    overflow-x: hidden;
+    min-height: 100vh;
+    color: #34495E;
+}
+
+body.catalogue-bg::before {
+    content: none;
+}
+
+body.catalogue-bg::after {
+    content: none;
+}
+
+@keyframes shimmer {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+}
+
+/* ================================
+   STYLES POUR CARTES INDISPONIBLES
+   ================================ */
+
+.unavailable-card {
+    opacity: 0.6 !important;
+    filter: grayscale(100%);
+    cursor: not-allowed !important;
+    pointer-events: auto;
+}
+
+.unavailable-card .card {
+    border: 2px solid #dc3545 !important;
+}
+
+.unavailable-card .card-img-top {
+    opacity: 0.7;
+}
+
+.unavailable-card .unavailable-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #dc3545;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    z-index: 10;
+}
+
+.unavailable-card .btn:disabled {
+    cursor: not-allowed !important;
+    opacity: 0.7;
+}
+
+/* Styles pour le catalogue et la flotte */
+.container .card,
+.content-wrapper .card {
+    background-color: #ffffff;
+    border: 1px solid #BDC3C7;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    color: #34495E;
+}
+
+.container .card-title,
+.content-wrapper .card-title {
+    color: #34495E !important;
+}
+
+/* Textes du catalogue en blanc */
+#catalogue-list-container h1,
+#catalogue-list-container .h2 {
+    color: white !important;
+}
+
+#catalogue-list-container p {
+    color: white !important;
+}
+
+/* Titres des pages de gestion en or */
+.content-wrapper h1,
+.content-wrapper h3 {
+    color: #B8860B !important;
+}
+
+/* Styles pour les charts du dashboard */
+#charts-zone {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+}
+
+#charts-zone .col-12 {
+    width: 100%;
+}
+
+#charts-zone .card {
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 320px;
+}
+
+#charts-zone .card h5 {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+#charts-zone .card > div {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 250px;
+}
+
+#charts-zone canvas {
+    max-width: 100%;
+    max-height: 100%;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogue de Voitures | HIBOS CARS</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="icon" type="image/png" href="assets/images/logo-location1.png">
+    
+    <link rel="stylesheet" href="css/style.css"> 
+    
+    <style>
+        .card-img-top {
+            /* Assure que les images sont bien coupées et centrées */
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100" style="background-color: #0f172a; background-image: linear-gradient(to bottom, #0f172a, #1e293b);">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #34495E;">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="catalogue.html">
+                <img src="assets/images/logo-location2.png" alt="HIBOS CARS Logo" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid #b8860b;">
+                <span class="fw-bold">HIBOS CARS</span>
+            </a>
+        </div>
+    </nav>
+    <div class="container my-5">
+        
+        <div id="catalogue-list-container">
+            <div class="alert alert-info text-center">
+                <i class="fas fa-spinner fa-spin me-2"></i> Chargement du catalogue des véhicules...
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script src="js/types.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/crud.js"></script>
+    
+    <script src="js/catalogue.js"></script> 
+</body>
+</html>
