@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | HIBOS CARS</title>
-    <link rel="icon" type="image/png" href="assets/images/logo-location2.png">
+    <title>Dashboard | Hibos Car</title>
+    <link rel="icon" type="image/png" href="assets/images/hibos_car_logo.png">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
@@ -15,42 +15,36 @@
     <div class="content-wrapper p-4 p-md-5">
         
         <div class="d-flex align-items-center gap-3 mb-5 border-bottom pb-2">
-            <img src="assets/images/logo-location2.png" alt="HIBOS CARS Logo" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid #b8860b;">
+            <img src="assets/images/hibos_car_logo.png" alt="Hibos Car Logo" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid #b8860b;">
             <h1 class="h2 fw-bold text-dark mb-0">Tableau de Bord : Aperçu Global</h1>
         </div>
 
+        <!-- KPIs -->
         <h3 class="mb-3 text-secondary">Indicateurs Opérationnels (KPIs)</h3>
         <div class="row g-4 mb-5">
-            <!-- Revenu Total -->
             <div class="col-12 col-sm-6 col-xl-3">
-                <div class="card shadow-sm border-0 p-4 text-center" style="min-height: 200px; display: flex; flex-direction: column; justify-content: center;">
-                    <span style="font-size: 3rem; color: #b8860b; display: block; margin-bottom: 1rem; font-weight: bold;">DH</span>
+                <div class="card shadow-sm border-0 p-4 text-center">
+                    <span style="font-size: 3rem; color: #b8860b;">DH</span>
                     <h5 class="text-muted small fw-bold">Revenu Total</h5>
                     <h2 class="fw-bold" id="kpi-revenue">0 MAD</h2>
                 </div>
             </div>
-
-            <!-- Locations Actives -->
             <div class="col-12 col-sm-6 col-xl-3">
-                <div class="card shadow-sm border-0 p-4 text-center" style="min-height: 200px; display: flex; flex-direction: column; justify-content: center;">
+                <div class="card shadow-sm border-0 p-4 text-center">
                     <i class="fas fa-file-contract fa-3x mb-3" style="color: #b8860b;"></i>
                     <h5 class="text-muted small fw-bold">Locations Actives</h5>
                     <h2 class="fw-bold" id="kpi-active-contracts">0</h2>
                 </div>
             </div>
-
-            <!-- Flotte Disponible -->
             <div class="col-12 col-sm-6 col-xl-3">
-                <div class="card shadow-sm border-0 p-4 text-center" style="min-height: 200px; display: flex; flex-direction: column; justify-content: center;">
+                <div class="card shadow-sm border-0 p-4 text-center">
                     <i class="fas fa-car-side fa-3x mb-3" style="color: #b8860b;"></i>
                     <h5 class="text-muted small fw-bold">Flotte Disponible</h5>
                     <h2 class="fw-bold" id="kpi-available-cars">0</h2>
                 </div>
             </div>
-
-            <!-- Clients Inscrits -->
             <div class="col-12 col-sm-6 col-xl-3">
-                <div class="card shadow-sm border-0 p-4 text-center" style="min-height: 200px; display: flex; flex-direction: column; justify-content: center;">
+                <div class="card shadow-sm border-0 p-4 text-center">
                     <i class="fas fa-users fa-3x mb-3" style="color: #b8860b;"></i>
                     <h5 class="text-muted small fw-bold">Clients Inscrits</h5>
                     <h2 class="fw-bold" id="kpi-total-clients">0</h2>
@@ -58,54 +52,35 @@
             </div>
         </div>
 
+        <!-- Zone des graphiques -->
         <h3 class="mb-3 text-secondary">Analyses de Flotte et Financielles</h3>
         <div id="charts-zone" class="row g-4">
-            
-            <div class="col-12 col-lg-6">
-                <div class="card shadow p-3 border-primary">
-                    <h5 class="fw-bold mb-3">Statut Actuel de la Flotte</h5>
-                    <div style="height: 250px;"><canvas id="chart-fleet-status"></canvas></div>
-                </div>
-            </div>
-            
-            <div class="col-12 col-lg-6">
-                <div class="card shadow p-3 border-success">
-                    <h5 class="fw-bold mb-3">Tendance des Revenus (6 Derniers Mois)</h5>
-                    <div style="height: 250px;"><canvas id="chart-revenue-trend"></canvas></div>
-                </div>
-            </div>
-
-            <div class="col-12 col-lg-6">
-                <div class="card shadow p-3 border-danger">
-                    <h5 class="fw-bold mb-3">Coûts par Type de Maintenance</h5>
-                    <div style="height: 250px;"><canvas id="chart-maintenance-cost"></canvas></div>
-                </div>
-            </div>
-
-            <div class="col-12 col-lg-6">
-                <div class="card shadow p-3 border-info">
-                    <h5 class="fw-bold mb-3">Top 5 Modèles Loués</h5>
-                    <div style="height: 250px;"><canvas id="chart-top-models"></canvas></div>
-                </div>
-            </div>
-
-            <div class="col-12">
-                <div class="card shadow p-3 border-warning">
-                    <h5 class="fw-bold mb-3">Voitures Assignées par Agence</h5>
-                    <div style="height: 250px;"><canvas id="chart-agency-occup"></canvas></div>
-                </div>
-            </div>
-            
-            </div>
+            <div class="col-12 col-lg-6"><canvas id="chart-fleet-status"></canvas></div>
+            <div class="col-12 col-lg-6"><canvas id="chart-revenue-trend"></canvas></div>
+            <div class="col-12 col-lg-6"><canvas id="chart-maintenance-cost"></canvas></div>
+            <div class="col-12 col-lg-6"><canvas id="chart-top-models"></canvas></div>
+            <div class="col-12 col-lg-6"><canvas id="chart-car-types"></canvas></div>
+            <div class="col-12 col-lg-6"><canvas id="chart-monthly-revenue"></canvas></div>
+            <div class="col-12 col-lg-6"><canvas id="chart-customer-satisfaction"></canvas></div>
+            <div class="col-12"><canvas id="chart-agency-occup"></canvas></div>
+            <div class="col-12 col-lg-6"><canvas id="chart-price-distribution"></canvas></div>
+            <div class="col-12 col-lg-6"><canvas id="chart-occupancy-rate"></canvas></div>
+        </div>
     </div>
     
+    <!-- Librairies -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
     
+    <!-- Scripts -->
     <script src="js/types.js"></script>
     <script src="js/data.js"></script>
     <script src="js/crud.js"></script>
     <script src="js/main.js"></script> 
     <script src="js/dashboard.js"></script> 
+
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <p class="mb-0">Created by Hiba and Basma</p>
+    </footer>
 </body>
 </html>

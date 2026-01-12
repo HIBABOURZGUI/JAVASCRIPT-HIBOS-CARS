@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factures et Reçus | Hibos Car</title>
+    <link rel="icon" type="image/png" href="assets/images/logo-location2.png">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="d-flex flex-column min-vh-100" style="background-color: #0f172a; background-image: linear-gradient(to bottom, #0f172a, #1e293b);">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #34495E;">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="catalogue.html">
+                <img src="assets/images/logo-location2.png" alt="Hibos Car Logo" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid #b8860b;">
+                <span class="fw-bold">Hibos Car</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="catalogue.html">
+                            <i class="fas fa-car"></i> Catalogue
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="rental-history.html">
+                            <i class="fas fa-history"></i> Mon Historique
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="invoice-receipt.html">
+                            <i class="fas fa-file-invoice"></i> Factures
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="logoutUser()">
+                            <i class="fas fa-sign-out-alt"></i> Déconnexion
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="h2 fw-bold text-white">Factures et Reçus</h1>
+            <div class="d-flex gap-2">
+                <button class="btn btn-success" onclick="generateNewInvoice()">
+                    <i class="fas fa-plus me-2"></i>Nouvelle Facture
+                </button>
+                <button class="btn btn-info" onclick="exportAllInvoices()">
+                    <i class="fas fa-download me-2"></i>Tout Exporter
+                </button>
+            </div>
+        </div>
+
+        <!-- Filtres -->
+        <div class="card bg-dark text-white mb-4">
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <label class="form-label">Type de document</label>
+                        <select class="form-select" id="documentType" onchange="filterDocuments()">
+                            <option value="">Tous les types</option>
+                            <option value="invoice">Facture</option>
+                            <option value="receipt">Reçu</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Statut</label>
+                        <select class="form-select" id="statusFilter" onchange="filterDocuments()">
+                            <option value="">Tous les statuts</option>
+                            <option value="paid">Payé</option>
+                            <option value="pending">En attente</option>
+                            <option value="overdue">En retard</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Date de début</label>
+                        <input type="date" class="form-control" id="startDate" onchange="filterDocuments()">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Date de fin</label>
+                        <input type="date" class="form-control" id="endDate" onchange="filterDocuments()">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistiques -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="card bg-success text-white">
+                    <div class="card-body text-center">
+                        <h3 id="totalInvoices">0</h3>
+                        <p>Total des factures</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-info text-white">
+                    <div class="card-body text-center">
+                        <h3 id="paidAmount">0 MAD</h3>
+                        <p>Montant payé</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-warning text-white">
+                    <div class="card-body text-center">
+                        <h3 id="pendingAmount">0 MAD</h3>
+                        <p>En attente</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-danger text-white">
+                    <div class="card-body text-center">
+                        <h3 id="overdueAmount">0 MAD</h3>
+                        <p>En retard</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tableau des documents -->
+        <div class="card bg-dark text-white">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-dark table-hover">
+                        <thead>
+                            <tr>
+                                <th>N° Document</th>
+                                <th>Type</th>
+                                <th>Date</th>
+                                <th>Client</th>
+                                <th>Montant</th>
+                                <th>Statut</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="documentsTableBody">
+                            <tr>
+                                <td colspan="7" class="text-center">
+                                    <i class="fas fa-spinner fa-spin me-2"></i> Chargement des documents...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de visualisation de facture -->
+    <div class="modal fade" id="invoiceModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header bg-primary">
+                    <h5 class="modal-title">Détails de la Facture</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="invoiceDetails">
+                    <!-- Invoice details will be populated here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn btn-primary" onclick="printInvoice()">
+                        <i class="fas fa-print me-2"></i>Imprimer
+                    </button>
+                    <button type="button" class="btn btn-success" onclick="downloadInvoice()">
+                        <i class="fas fa-download me-2"></i>Télécharger PDF
+                    </button>
+                    <button type="button" class="btn btn-info" onclick="emailInvoice()">
+                        <i class="fas fa-envelope me-2"></i>Envoyer par email
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de génération de facture -->
+    <div class="modal fade" id="generateInvoiceModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header bg-success">
+                    <h5 class="modal-title">Générer une Nouvelle Facture</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="generateInvoiceForm">
+                        <div class="mb-3">
+                            <label class="form-label">Type de document</label>
+                            <select class="form-select" id="newDocumentType" required>
+                                <option value="invoice">Facture</option>
+                                <option value="receipt">Reçu</option>
+                                <option value="quote">Devis</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Client</label>
+                            <select class="form-select" id="clientSelect" required>
+                                <option value="">Sélectionner un client...</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Contrat associé</label>
+                            <select class="form-select" id="contractSelect" required>
+                                <option value="">Sélectionner un contrat...</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Montant</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="invoiceAmount" step="0.01" required>
+                                <span class="input-group-text">MAD</span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Date d'échéance</label>
+                            <input type="date" class="form-control" id="dueDate" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Notes</label>
+                            <textarea class="form-control" id="invoiceNotes" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-success" onclick="createInvoice()">
+                        <i class="fas fa-file-invoice me-2"></i>Générer
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/types.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/crud.js"></script>
+    <script src="js/invoice-receipt.js"></script>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-auto">
+        <p class="mb-0">Created by Hiba and Basma</p>
+    </footer>
+</body>
+</html>

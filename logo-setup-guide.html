@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide d'Installation du Logo - Hibos Car</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .guide-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        .logo-preview {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 50%;
+            border: 4px solid #B8860B;
+            margin: 20px auto;
+            display: block;
+            box-shadow: 0 8px 25px rgba(184, 134, 11, 0.3);
+        }
+        .step-card {
+            background: #f8f9fa;
+            border-left: 4px solid #B8860B;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        .step-number {
+            background: #B8860B;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .file-path {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        .logo-showcase {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #34495E 0%, #2c3e50 100%);
+            border-radius: 15px;
+            color: white;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="guide-card">
+            <h1 class="text-center mb-4" style="color: #B8860B;">
+                <i class="fas fa-image me-2"></i>
+                Guide d'Installation du Logo Hibos Car
+            </h1>
+            
+            <div class="logo-showcase">
+                <h3><i class="fas fa-crown me-2"></i>Hibos Car</h3>
+                <p>Votre nouveau logo sera affiché ici</p>
+                <div class="logo-preview">
+                    <i class="fas fa-car fa-4x" style="color: #B8860B;"></i>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h4>Préparez votre logo</h4>
+                <ul>
+                    <li>Format: PNG (recommandé) ou JPG</li>
+                    <li>Taille: 300x300px minimum (carré idéal)</li>
+                    <li>Fond transparent si possible</li>
+                    <li>Couleurs: Or (#B8860B) et blanc</li>
+                    <li>Nom du fichier: <code>hibos_car_logo.png</code></li>
+                </ul>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h4>Emplacement du fichier</h4>
+                <p>Placez votre logo dans le dossier suivant:</p>
+                <div class="file-path">assets/images/hibos_car_logo.png</div>
+                <p class="text-muted mt-2">
+                    <i class="fas fa-info-circle me-2"></i>
+                    Ce chemin est relatif à la racine du projet Hibos Car
+                </p>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h4>Fichiers à mettre à jour</h4>
+                <p>Le logo sera automatiquement utilisé dans ces pages:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul>
+                            <li><code>index.html</code> - Page de connexion</li>
+                            <li><code>register.html</code> - Page d'inscription</li>
+                            <li><code>catalogue.html</code> - Catalogue</li>
+                            <li><code>dashboard.html</code> - Tableau de bord admin</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul>
+                            <li><code>category-selection.html</code> - Sélection de catégorie</li>
+                            <li><code>rental-history.html</code> - Historique</li>
+                            <li><code>payment-system.html</code> - Paiements</li>
+                            <li>Et toutes les autres pages...</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <h4>Vérification</h4>
+                <p>Après avoir ajouté votre logo:</p>
+                <ol>
+                    <li>Videz le cache de votre navigateur (Ctrl+F5)</li>
+                    <li>Actualisez les pages de l'application</li>
+                    <li>Vérifiez que le logo s'affiche correctement</li>
+                    <li>Testez les effets hover sur le logo</li>
+                </ol>
+            </div>
+
+            <div class="alert alert-info">
+                <h5><i class="fas fa-lightbulb me-2"></i>Astuce</h5>
+                <p>Le logo actuel utilise <code>logo-location2.png</code>. Vous pouvez remplacer ce fichier directement ou utiliser le nouveau nom <code>hibos_car_logo.png</code> pour une meilleure organisation.</p>
+            </div>
+
+            <div class="alert alert-warning">
+                <h5><i class="fas fa-exclamation-triangle me-2"></i>Important</h5>
+                <p>Assurez-vous que le nom du fichier correspond exactement à <code>hibos_car_logo.png</code> (minuscules, underscores, pas d'espaces) pour garantir que toutes les références fonctionnent correctement.</p>
+            </div>
+
+            <div class="text-center mt-4">
+                <button class="btn btn-primary btn-lg" onclick="window.location.href='index.html'">
+                    <i class="fas fa-eye me-2"></i>Voir le résultat
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avis et Évaluations | Hibos Car</title>
+    <link rel="icon" type="image/png" href="assets/images/logo-location2.png">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .star-rating {
+            color: #ffc107;
+        }
+        .star-rating .far {
+            color: #6c757d;
+        }
+        .review-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .review-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .rating-summary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .progress-bar-rating {
+            background-color: #ffc107;
+        }
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100" style="background-color: #0f172a; background-image: linear-gradient(to bottom, #0f172a, #1e293b);">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #34495E;">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="catalogue.html">
+                <img src="assets/images/logo-location2.png" alt="Hibos Car Logo" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid #b8860b;">
+                <span class="fw-bold">Hibos Car</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="catalogue.html">
+                            <i class="fas fa-car"></i> Catalogue
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="rental-history.html">
+                            <i class="fas fa-history"></i> Mon Historique
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="review-rating-system.html">
+                            <i class="fas fa-star"></i> Avis
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="logoutUser()">
+                            <i class="fas fa-sign-out-alt"></i> Déconnexion
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <h1 class="h2 fw-bold text-white mb-4">Avis et Évaluations</h1>
+        
+        <!-- Résumé des évaluations -->
+        <div class="card rating-summary text-white mb-4">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-md-4 text-center">
+                        <h1 class="display-4 fw-bold" id="averageRating">0.0</h1>
+                        <div class="star-rating mb-2" id="averageStars">
+                            <!-- Stars will be populated here -->
+                        </div>
+                        <p class="mb-0">Basé sur <span id="totalReviews">0</span> avis</p>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="rating-distribution">
+                            <div class="d-flex align-items-center mb-2">
+                                <span class="me-3">5 étoiles</span>
+                                <div class="progress flex-grow-1" style="height: 20px;">
+                                    <div class="progress-bar progress-bar-rating" id="rating5" style="width: 0%"></div>
+                                </div>
+                                <span class="ms-3" id="rating5Count">0</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <span class="me-3">4 étoiles</span>
+                                <div class="progress flex-grow-1" style="height: 20px;">
+                                    <div class="progress-bar progress-bar-rating" id="rating4" style="width: 0%"></div>
+                                </div>
+                                <span class="ms-3" id="rating4Count">0</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <span class="me-3">3 étoiles</span>
+                                <div class="progress flex-grow-1" style="height: 20px;">
+                                    <div class="progress-bar progress-bar-rating" id="rating3" style="width: 0%"></div>
+                                </div>
+                                <span class="ms-3" id="rating3Count">0</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <span class="me-3">2 étoiles</span>
+                                <div class="progress flex-grow-1" style="height: 20px;">
+                                    <div class="progress-bar progress-bar-rating" id="rating2" style="width: 0%"></div>
+                                </div>
+                                <span class="ms-3" id="rating2Count">0</span>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <span class="me-3">1 étoile</span>
+                                <div class="progress flex-grow-1" style="height: 20px;">
+                                    <div class="progress-bar progress-bar-rating" id="rating1" style="width: 0%"></div>
+                                </div>
+                                <span class="ms-3" id="rating1Count">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filtres et tri -->
+        <div class="card bg-dark text-white mb-4">
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <label class="form-label">Type d'avis</label>
+                        <select class="form-select" id="reviewType" onchange="filterReviews()">
+                            <option value="">Tous les avis</option>
+                            <option value="car">Voiture</option>
+                            <option value="service">Service</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Note minimale</label>
+                        <select class="form-select" id="minRating" onchange="filterReviews()">
+                            <option value="">Toutes les notes</option>
+                            <option value="5">5 étoiles</option>
+                            <option value="4">4 étoiles et plus</option>
+                            <option value="3">3 étoiles et plus</option>
+                            <option value="2">2 étoiles et plus</option>
+                            <option value="1">1 étoile et plus</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Tri par</label>
+                        <select class="form-select" id="sortBy" onchange="filterReviews()">
+                            <option value="recent">Plus récents</option>
+                            <option value="oldest">Plus anciens</option>
+                            <option value="highest">Note la plus haute</option>
+                            <option value="lowest">Note la plus basse</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Recherche</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="searchFilter" placeholder="Rechercher..." oninput="filterReviews()">
+                            <button class="btn btn-outline-light" onclick="filterReviews()">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bouton d'ajout d'avis -->
+        <div class="text-center mb-4">
+            <button class="btn btn-primary btn-lg" onclick="showReviewModal()">
+                <i class="fas fa-star me-2"></i>Laisser un avis
+            </button>
+        </div>
+
+        <!-- Liste des avis -->
+        <div id="reviewsList">
+            <div class="text-center">
+                <i class="fas fa-spinner fa-spin me-2"></i> Chargement des avis...
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal d'ajout d'avis -->
+    <div class="modal fade" id="reviewModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header bg-primary">
+                    <h5 class="modal-title">Laisser un Avis</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="reviewForm">
+                        <div class="mb-3">
+                            <label class="form-label">Type d'avis</label>
+                            <select class="form-select" id="newReviewType" required>
+                                <option value="car">Avis sur une voiture</option>
+                                <option value="service">Avis sur le service</option>
+                            </select>
+                        </div>
+                        <div class="mb-3" id="carSelectDiv">
+                            <label class="form-label">Voiture</label>
+                            <select class="form-select" id="carSelect">
+                                <option value="">Sélectionner une voiture...</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Note</label>
+                            <div class="star-rating-input">
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn btn-outline-warning" onclick="setRating(1)">
+                                        <i class="far fa-star"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-outline-warning" onclick="setRating(2)">
+                                        <i class="far fa-star"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-outline-warning" onclick="setRating(3)">
+                                        <i class="far fa-star"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-outline-warning" onclick="setRating(4)">
+                                        <i class="far fa-star"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-outline-warning" onclick="setRating(5)">
+                                        <i class="far fa-star"></i>
+                                    </button>
+                                </div>
+                                <input type="hidden" id="ratingValue" value="0" required>
+                                <small class="text-muted">Cliquez sur les étoiles pour noter</small>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Titre de l'avis</label>
+                            <input type="text" class="form-control" id="reviewTitle" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Commentaire</label>
+                            <textarea class="form-control" id="reviewComment" rows="4" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Recommanderiez-vous Hibos Car ?</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="recommendation" id="recommendYes" value="yes" required>
+                                <label class="form-check-label" for="recommendYes">
+                                    <i class="fas fa-thumbs-up me-2"></i>Oui, je recommande
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="recommendation" id="recommendNo" value="no" required>
+                                <label class="form-check-label" for="recommendNo">
+                                    <i class="fas fa-thumbs-down me-2"></i>Non, je ne recommande pas
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-primary" onclick="submitReview()">
+                        <i class="fas fa-paper-plane me-2"></i>Envoyer l'avis
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de détails d'avis -->
+    <div class="modal fade" id="reviewDetailsModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header bg-info">
+                    <h5 class="modal-title">Détails de l'Avis</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="reviewDetails">
+                    <!-- Details will be populated here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn btn-danger" id="deleteReviewBtn" style="display: none;" onclick="deleteReview()">
+                        <i class="fas fa-trash me-2"></i>Supprimer
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/types.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/crud.js"></script>
+    <script src="js/review-rating-system.js"></script>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-auto">
+        <p class="mb-0">Created by Hiba and Basma</p>
+    </footer>
+</body>
+</html>

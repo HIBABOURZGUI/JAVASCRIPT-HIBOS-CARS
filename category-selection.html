@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sélection de Catégorie | Hibos Car</title>
+    <link rel="icon" type="image/png" href="assets/images/hibos_car_logo.png">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            min-height: 100vh;
+        }
+        .navbar-brand {
+            color: #dc3545 !important;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .navbar {
+            background: rgba(0, 0, 0, 0.9) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid #dc3545;
+        }
+        .category-card {
+            background: linear-gradient(135deg, #dc3545 0%, #a02622 100%);
+            border: none;
+            border-radius: 20px;
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(220, 53, 69, 0.4);
+            border-color: #dc3545;
+        }
+        .category-card.luxury {
+            background: linear-gradient(135deg, #dc3545 0%, #8b0000 100%);
+        }
+        .category-card.sport {
+            background: linear-gradient(135deg, #ff6b6b 0%, #dc3545 100%);
+        }
+        .category-card.family {
+            background: linear-gradient(135deg, #a02622 0%, #6b1a1a 100%);
+        }
+        .category-card.electric {
+            background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%);
+        }
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s;
+        }
+        .category-card:hover::before {
+            animation: shine 0.6s ease-in-out;
+        }
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        .category-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: #B8860B;
+        }
+        .category-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .category-description {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        .user-info {
+            background: rgba(220, 53, 69, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(220, 53, 69, 0.3);
+        }
+        .modern-footer {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            border-top: 3px solid #dc3545;
+            color: #ffffff;
+            padding: 40px 0 20px;
+            margin-top: auto;
+        }
+        .footer-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid #dc3545;
+            margin-bottom: 15px;
+        }
+        .footer-title {
+            color: #dc3545;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        .footer-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-links a:hover {
+            color: #dc3545;
+        }
+        .social-icons a {
+            color: #ffffff;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        .social-icons a:hover {
+            color: #dc3545;
+        }
+        .copyright {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px 0;
+            margin-top: 30px;
+            border-top: 1px solid #333;
+        }
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100" style="background: linear-gradient(135deg, #0f172a, #1e293b);">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #34495E;">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                <img src="assets/images/hibos_car_logo.png" alt="Hibos Car Logo" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid #dc3545;">
+                <span class="fw-bold">Hibos Car</span>
+            </a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="#" onclick="logoutUser()">
+                    <i class="fas fa-sign-out-alt"></i> Déconnexion
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5 flex-grow-1">
+        <!-- User Information -->
+        <div class="user-info text-white">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h4 class="mb-1">Bienvenue, <span id="userName">Cher Client</span>!</h4>
+                    <p class="mb-0 opacity-75">Choisissez une catégorie de véhicules pour commencer votre expérience Hibos Car</p>
+                </div>
+                <div class="text-end">
+                    <small class="d-block opacity-75">Dernière connexion: <span id="lastLogin">Aujourd'hui</span></small>
+                    <small class="d-block opacity-75">Membre depuis: <span id="memberSince">Nouveau</span></small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category Selection -->
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="category-card luxury" onclick="selectCategory('luxury')">
+                    <div class="category-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3 class="category-title">Luxe</h3>
+                    <p class="category-description">
+                        Découvrez nos véhicules premium avec confort et technologies avancées
+                    </p>
+                    <div class="mt-3">
+                        <span class="badge bg-light text-dark">15 véhicules</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3">
+                <div class="category-card sport" onclick="selectCategory('sport')">
+                    <div class="category-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3 class="category-title">Sport</h3>
+                    <p class="category-description">
+                        Performance et adrénaline avec nos SUV sportifs et dynamiques
+                    </p>
+                    <div class="mt-3">
+                        <span class="badge bg-light text-dark">8 véhicules</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3">
+                <div class="category-card family" onclick="selectCategory('family')">
+                    <div class="category-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="category-title">Familial</h3>
+                    <p class="category-description">
+                        Espace et sécurité pour toute la famille, confort garanti
+                    </p>
+                    <div class="mt-3">
+                        <span class="badge bg-light text-dark">12 véhicules</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3">
+                <div class="category-card electric" onclick="selectCategory('electric')">
+                    <div class="category-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="category-title">Électrique</h3>
+                    <p class="category-description">
+                    Écologie et innovation avec notre flotte de véhicules électriques
+                    </p>
+                    <div class="mt-3">
+                        <span class="badge bg-light text-dark">6 véhicules</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="text-center">
+                    <h4 class="text-white mb-4">Actions Rapides</h4>
+                    <div class="d-flex justify-content-center gap-3 flex-wrap">
+                        <button class="btn btn-outline-light" onclick="viewAllCars()">
+                            <i class="fas fa-car me-2"></i>Voir tous les véhicules
+                        </button>
+                        <button class="btn btn-outline-light" onclick="viewMyRentals()">
+                            <i class="fas fa-history me-2"></i>Mes locations
+                        </button>
+                        <button class="btn btn-outline-light" onclick="viewProfile()">
+                            <i class="fas fa-user me-2"></i>Mon profil
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modern Footer -->
+    <footer class="modern-footer">
+        <div class="container">
+            <div class="row">
+                <!-- Logo and About -->
+                <div class="col-md-4 mb-4">
+                    <div class="text-center text-md-start">
+                        <img src="assets/images/hibos_car_logo.png" alt="Hibos Car" class="footer-logo">
+                        <h4 class="footer-title">Hibos Car</h4>
+                        <p class="text-muted">Votre partenaire de confiance pour la location de véhicules premium au Maroc. Service exceptionnel et qualité garantie.</p>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-title">Liens Rapides</h5>
+                    <div class="footer-links">
+                        <div class="mb-2"><a href="catalogue.html"><i class="fas fa-car me-2"></i>Catalogue</a></div>
+                        <div class="mb-2"><a href="#" onclick="viewMyRentals()"><i class="fas fa-history me-2"></i>Mes Locations</a></div>
+                        <div class="mb-2"><a href="#" onclick="viewProfile()"><i class="fas fa-user me-2"></i>Mon Profil</a></div>
+                        <div class="mb-2"><a href="#" onclick="logoutUser()"><i class="fas fa-sign-out-alt me-2"></i>Déconnexion</a></div>
+                    </div>
+                </div>
+                
+                <!-- Contact & Social -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-title">Contact & Réseaux</h5>
+                    <p class="text-muted mb-3">
+                        <i class="fas fa-phone me-2"></i>+212 5XX-XXXXXX<br>
+                        <i class="fas fa-envelope me-2"></i>contact@hiboscar.ma<br>
+                        <i class="fas fa-map-marker-alt me-2"></i>Casablanca, Maroc
+                    </p>
+                    <div class="social-icons text-center text-md-start">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="copyright text-center">
+                <div class="container">
+                    <p class="mb-0">
+                        © 2026 Hibos Car. Tous droits réservés. | 
+                        <span class="text-muted">Created with ❤️ by Hiba and Basma</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/types.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/crud.js"></script>
+    <script src="js/category-selection.js"></script>
+</body>
+</html>
