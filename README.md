@@ -845,7 +845,7 @@ SOFTWARE.
 
 <div align="center">
 
-## 👩‍💻 Développeuse 
+## 👩‍💻 Développeuses 
 
 **Hiba Bourzgui & Benchahid basma**  
 *Full Stack Developer & UI/UX Designer*
@@ -854,7 +854,7 @@ SOFTWARE.
 <tr>
 <td align="center">
 <strong>📧 Email</strong><br>
-<a href="mailto:hibaabourzgui@gmail.com ">hibaabourzgui@gmail.com && Benchahid basma </a>
+<a href="mailto:hibaabourzgui@gmail.com ">hibaabourzgui@gmail.com && benchahid.basma@gmail.com </a>
 </td>
 <td align="center">
 <strong>💼 LinkedIn</strong><br>
