@@ -848,7 +848,7 @@ SOFTWARE.
 ## 👩‍💻 Développeuses 
 
 **Hiba Bourzgui & Benchahid basma**  
-*Full Stack Developer & UI/UX Designer*
+
 
 <table>
 <tr>
